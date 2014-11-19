@@ -38,6 +38,9 @@
  */
 
 #include <MeggyJrSimple.h>    // Required code, line 1 of 2.
+// thanks to Philip Tanton for helping me to understand how to make the code work
+int z = 0;
+
 
 void setup()                    // run once, when the sketch starts
 {
@@ -46,15 +49,25 @@ void setup()                    // run once, when the sketch starts
 
 void loop()                     // run over and over again
 {
-  
-  DrawPx(3,4,Yellow);           // Draw a dot at x=3, y=4, in yellow.
-  DisplaySlate();                  // Write the drawing to the screen.
-  delay(1000);                  // waits for a second
-  
-  ClearSlate();                 // Erase drawing
-  DisplaySlate();                  // Write the (now empty) drawing to the screen.
-   
-  delay(1000);                  // waits for a second
+  for(int z=0;z<8;z++)
+   {
+     for(int x=0;x<8;x++)
+     {
+       for(int y=0;y<8;y++)
+       {
+         DrawPx(x,y,z);
+         DisplaySlate();
+         delay(50);
+         ClearSlate();
+         DrawPx(x,y,z);
+         delay(50);
+         ClearSlate();
+       if (z <= 6)
+          z=z+1;
+          else z = 1;
+        }
+       }
+       delay(50);
+     }
 }
-
 
